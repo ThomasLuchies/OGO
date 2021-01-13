@@ -46,13 +46,15 @@ public class XMLAccessor extends Accessor {
     protected static final String NFE = "Number Format Exception";
     
     
-    private String getTitle(Element element, String tagName) {
+    private String getTitle(Element element, String tagName)
+	{
     	NodeList titles = element.getElementsByTagName(tagName);
     	return titles.item(0).getTextContent();
     	
     }
 
-	public void loadFile(Presentation presentation, String filename) throws IOException {
+	public void loadFile(Presentation presentation, String filename) throws IOException
+	{
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
@@ -87,7 +89,8 @@ public class XMLAccessor extends Accessor {
 		}	
 	}
 
-	protected void loadSlideItem(Slide slide, Element item) {
+	protected void loadSlideItem(Slide slide, Element item)
+	{
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();

@@ -1,3 +1,5 @@
+import jdk.jfr.StackTrace;
+
 import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;
