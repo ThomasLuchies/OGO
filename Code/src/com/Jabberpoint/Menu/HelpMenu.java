@@ -20,12 +20,6 @@ public class HelpMenu extends DropDownMenu
     {
         MenuItem menuItem;
         this.menu.add(menuItem = mkMenuItem("About"));
-        menuItem.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-                AboutBox.show(parent);
-            }
-        });
+        menuItem.addActionListener(actionEvent -> AboutBox.show(parent));
     }
 }
