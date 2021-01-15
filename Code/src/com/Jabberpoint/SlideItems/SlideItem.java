@@ -1,4 +1,6 @@
-package Jabberpoint;
+package com.Jabberpoint.SlideItems;
+
+import com.Jabberpoint.Style;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;
@@ -22,11 +24,6 @@ public abstract class SlideItem
 	public SlideItem(int lev)
 	{
 		level = lev;
-	}
-
-	public SlideItem()
-	{
-		this(0);
 	}
 
 //Returns the level

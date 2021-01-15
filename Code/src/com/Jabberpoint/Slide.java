@@ -1,6 +1,7 @@
-package Jabberpoint;
+package com.Jabberpoint;
 
-import Jabberpoint.Menu.HelpMenu;
+import com.Jabberpoint.SlideItems.SlideItem;
+import com.Jabberpoint.SlideItems.TextItem;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -20,8 +21,8 @@ import java.util.Vector;
 public class Slide {
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
-	protected String title; //The title is kept separately
-	protected Vector<SlideItem> items; //The SlideItems are kept in a vector
+	private String title; //The title is kept separately
+	private Vector<SlideItem> items; //The SlideItems are kept in a vector
 
 	public Slide() {
 		items = new Vector<SlideItem>();

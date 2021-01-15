@@ -1,4 +1,4 @@
-package Jabberpoint;
+package com.Jabberpoint;
 
 import java.awt.Frame;
 import javax.swing.JOptionPane;

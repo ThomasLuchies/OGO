@@ -1,4 +1,4 @@
-package Jabberpoint;
+package com.Jabberpoint;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;

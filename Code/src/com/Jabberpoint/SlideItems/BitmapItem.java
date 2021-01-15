@@ -1,4 +1,6 @@
-package Jabberpoint;
+package com.Jabberpoint.SlideItems;
+
+import com.Jabberpoint.Style;
 
 import java.awt.Rectangle;
 import java.awt.Graphics;
@@ -9,7 +11,6 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 /** <p>The class for a Bitmap item</p>
@@ -27,10 +28,6 @@ public class BitmapItem extends SlideItem
 {
   private BufferedImage bufferedImage;
   private String imageName;
-  
-  protected static final String FILE = "File ";
-  protected static final String NOTFOUND = " not found";
-
 
   	//level indicates the item-level; name indicates the name of the file with the image
 	public BitmapItem(int level, String name)
@@ -43,7 +40,7 @@ public class BitmapItem extends SlideItem
 		}
 		catch (IOException e)
 		{
-			System.err.println(FILE + imageName + NOTFOUND) ;
+			System.err.println("File " + imageName + "not found") ;
 		}
 	}
 
@@ -63,7 +60,7 @@ public class BitmapItem extends SlideItem
 	}
 
 	//Draws the image
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
+	public void draw(int x, int y, float scale, Graphics g,  Style myStyle, ImageObserver observer)
 	{
 		int width = x + (int) (myStyle.indent * scale);
 		int height = y + (int) (myStyle.leading * scale);

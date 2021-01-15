@@ -1,4 +1,4 @@
-package Jabberpoint;
+package com.Jabberpoint.Accessors;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -11,6 +11,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import com.Jabberpoint.Presentation;
+import com.Jabberpoint.Slide;
+import com.Jabberpoint.SlideItems.BitmapItem;
+import com.Jabberpoint.SlideItems.SlideItem;
+import com.Jabberpoint.SlideItems.TextItem;
 import org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,27 +33,8 @@ import org.w3c.dom.NodeList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class XMLAccessor extends Accessor {
-	
-    /** Default API to use. */
-    protected static final String DEFAULT_API_TO_USE = "dom";
-    
-    /** Names of xml tags of attributes */
-    protected static final String SHOWTITLE = "showtitle";
-    protected static final String SLIDETITLE = "title";
-    protected static final String SLIDE = "slide";
-    protected static final String ITEM = "item";
-    protected static final String LEVEL = "level";
-    protected static final String KIND = "kind";
-    protected static final String TEXT = "text";
-    protected static final String IMAGE = "image";
-    
-    /** Text of messages */
-    protected static final String PCE = "Parser Configuration Exception";
-    protected static final String UNKNOWNTYPE = "Unknown Element type";
-    protected static final String NFE = "Number Format Exception";
-    
-    
+public class XMLAccessor extends Accessor
+{
     private String getTitle(Element element, String tagName)
 	{
     	NodeList titles = element.getElementsByTagName(tagName);
@@ -64,18 +50,18 @@ public class XMLAccessor extends Accessor {
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
 			Document document = builder.parse(new File(filename)); //Create a JDOM document
 			Element doc = document.getDocumentElement();
-			presentation.setTitle(getTitle(doc, SHOWTITLE));
+			presentation.setTitle(getTitle(doc, "showtitle"));
 
-			NodeList slides = doc.getElementsByTagName(SLIDE);
+			NodeList slides = doc.getElementsByTagName("slide");
 			ArrayList<Slide> slidesList = new ArrayList<>();
 			max = slides.getLength();
 			for (slideNumber = 0; slideNumber < max; slideNumber++)
 			{
 				Element xmlSlide = (Element) slides.item(slideNumber);
 				Slide slide = new Slide();
-				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
+				slide.setTitle(getTitle(xmlSlide, "title"));
 				presentation.append(slide);
-				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
+				NodeList slideItems = xmlSlide.getElementsByTagName("item");
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++)
 				{
@@ -91,7 +77,7 @@ public class XMLAccessor extends Accessor {
 			System.err.println(sax.getMessage());
 		}
 		catch (ParserConfigurationException pcx) {
-			System.err.println(PCE);
+			System.err.println("Parser Configuration Exception");
 		}	
 	}
 
@@ -99,7 +85,7 @@ public class XMLAccessor extends Accessor {
 	{
 		int level = 1; // default
 		NamedNodeMap attributes = item.getAttributes();
-		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
+		String leveltext = attributes.getNamedItem("level").getTextContent();
 		if (leveltext != null)
 		{
 			try
@@ -107,24 +93,25 @@ public class XMLAccessor extends Accessor {
 				level = Integer.parseInt(leveltext);
 			}
 			catch(NumberFormatException x) {
-				System.err.println(NFE);
+				System.err.println("Number Format Exception");
 			}
 		}
-		String type = attributes.getNamedItem(KIND).getTextContent();
-		if (TEXT.equals(type)) {
+		String type = attributes.getNamedItem("kind").getTextContent();
+		if ("text".equals(type)) {
 			slide.append(new TextItem(level, item.getTextContent()));
 		}
 		else {
-			if (IMAGE.equals(type)) {
+			if ("image".equals(type)) {
 				slide.append(new BitmapItem(level, item.getTextContent()));
 			}
 			else {
-				System.err.println(UNKNOWNTYPE);
+				System.err.println("Unknown Element type");
 			}
 		}
 	}
 
-	public void saveFile(Presentation presentation, String filename) throws IOException {
+	public void saveFile(Presentation presentation, String filename) throws IOException
+	{
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");

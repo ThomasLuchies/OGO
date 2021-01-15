@@ -1,8 +1,8 @@
-package Jabberpoint;
+package com.Jabberpoint;
 
-import Jabberpoint.Menu.FileMenu;
-import Jabberpoint.Menu.HelpMenu;
-import Jabberpoint.Menu.ViewMenu;
+import com.Jabberpoint.Menu.FileMenu;
+import com.Jabberpoint.Menu.HelpMenu;
+import com.Jabberpoint.Menu.ViewMenu;
 
 import java.awt.MenuBar;
 import java.awt.Frame;

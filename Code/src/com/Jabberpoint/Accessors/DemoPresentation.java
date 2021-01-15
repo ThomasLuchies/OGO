@@ -1,6 +1,9 @@
-package Jabberpoint;
+package com.Jabberpoint.Accessors;
 
-import java.io.IOException;
+import com.Jabberpoint.Accessors.Accessor;
+import com.Jabberpoint.Presentation;
+import com.Jabberpoint.Slide;
+import com.Jabberpoint.SlideItems.BitmapItem;
 
 /** A built-in demo presentation
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman

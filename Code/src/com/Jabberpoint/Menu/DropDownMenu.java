@@ -1,16 +1,16 @@
-package Jabberpoint.Menu;
+package com.Jabberpoint.Menu;
 
-import Jabberpoint.Presentation;
+import com.Jabberpoint.Presentation;
 
 import java.awt.*;
 
-public abstract class JabberPointMenu
+public abstract class DropDownMenu
 {
     protected Menu menu;
     protected Presentation presentation;
     protected Frame parent;
 
-    public JabberPointMenu(Frame parent, Presentation presentation)
+    public DropDownMenu(Frame parent, Presentation presentation)
     {
         this.presentation = presentation;
         this.parent = parent;
@@ -26,7 +26,7 @@ public abstract class JabberPointMenu
         this.menu = menu;
     }
 
-    public abstract void addEventListeners();
+    public abstract void addMenuItems();
 
     public MenuItem mkMenuItem(String name)
     {

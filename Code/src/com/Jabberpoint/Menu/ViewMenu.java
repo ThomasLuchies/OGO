@@ -1,22 +1,22 @@
-package Jabberpoint.Menu;
+package com.Jabberpoint.Menu;
 
-import Jabberpoint.Presentation;
+import com.Jabberpoint.Presentation;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewMenu extends JabberPointMenu
+public class ViewMenu extends DropDownMenu
 {
 
     public ViewMenu(Frame parent, Presentation presentation)
     {
         super(parent, presentation);
         this.menu = new Menu("View");
-        addEventListeners();
+        addMenuItems();
     }
 
     @Override
-    public void addEventListeners()
+    public void addMenuItems()
     {
         MenuItem menuItem;
         this.menu.add(menuItem = mkMenuItem("Next"));

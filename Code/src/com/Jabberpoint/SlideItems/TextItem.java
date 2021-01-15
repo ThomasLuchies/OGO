@@ -1,6 +1,8 @@
-package Jabberpoint;
+package com.Jabberpoint.SlideItems;
 
-import Jabberpoint.Style;
+import com.Jabberpoint.Slide;
+import com.Jabberpoint.SlideItems.SlideItem;
+import com.Jabberpoint.Style;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -29,8 +31,6 @@ public class TextItem extends SlideItem
 {
     private String text;
 
-    private static final String EMPTYTEXT = "No Text Given";
-
     //A textitem of int level with text string
     public TextItem(int level, String string) {
         super(level);
@@ -39,7 +39,7 @@ public class TextItem extends SlideItem
 
     //An empty textitem
     public TextItem() {
-        this(0, EMPTYTEXT);
+        this(0, "No Text Given");
     }
 
     //Returns the text
@@ -79,7 +79,8 @@ public class TextItem extends SlideItem
     //Draws the item
     public void draw(int x, int y, float scale, Graphics g,
                      Style myStyle, ImageObserver o) {
-        if (text == null || text.length() == 0) {
+        if (text == null || text.length() == 0)
+        {
             return;
         }
         java.util.List<TextLayout> layouts = getLayouts(g, myStyle, scale);

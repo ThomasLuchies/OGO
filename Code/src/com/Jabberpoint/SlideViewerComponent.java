@@ -1,4 +1,4 @@
-package Jabberpoint;
+package com.Jabberpoint;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -22,19 +22,17 @@ import javax.swing.JFrame;
 public class SlideViewerComponent extends JComponent {
 		
 	private Slide slide; //The current slide
-	private Font labelFont = null; //The font for labels
-	private Presentation presentation = null; //The presentation
-	private JFrame frame = null;
+	private Font labelFont; //The font for labels
+	private Presentation presentation; //The presentation
+	private JFrame frame;
 	
-	private static final long serialVersionUID = 227L;
-	
-	private static final Color BGCOLOR = Color.white;
-	private static final Color COLOR = Color.black;
-	private static final String FONTNAME = "Dialog";
-	private static final int FONTSTYLE = Font.BOLD;
-	private static final int FONTHEIGHT = 10;
-	private static final int XPOS = 1100;
-	private static final int YPOS = 20;
+	private final Color BGCOLOR = Color.white;
+	private final Color COLOR = Color.black;
+	private final String FONTNAME = "Dialog";
+	private final int FONTSTYLE = Font.BOLD;
+	private final int FONTHEIGHT = 10;
+	private final int XPOS = 1100;
+	private final int YPOS = 20;
 
 	public SlideViewerComponent(Presentation pres, JFrame frame)
 	{

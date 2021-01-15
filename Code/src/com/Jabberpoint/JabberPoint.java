@@ -1,4 +1,7 @@
-package Jabberpoint;
+package com.Jabberpoint;
+
+import com.Jabberpoint.Accessors.Accessor;
+import com.Jabberpoint.Accessors.XMLAccessor;
 
 import javax.swing.JOptionPane;
 
@@ -19,16 +22,12 @@ import java.io.IOException;
  */
 
 public class JabberPoint {
-	protected static final String IOERR = "IO Error: ";
-	protected static final String JABERR = "Jabberpoint Error ";
-	protected static final String JABVERSION = "Jabberpoint 1.6 - OU version";
-
 	/** The main program */
 	public static void main(String[] argv)
 	{
 		Style.createStyles();
 		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
+		new SlideViewerFrame("Jabberpoint 1.6 - OU version ", presentation);
 		try
 		{
 			if (argv.length == 0)
@@ -44,7 +43,7 @@ public class JabberPoint {
 		catch (IOException ex)
 		{
 			JOptionPane.showMessageDialog(null,
-					IOERR + ex, JABERR,
+					"IO Error: " + ex, "Jabberpoint Error ",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
